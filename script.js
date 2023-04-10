@@ -45,7 +45,6 @@ function mostrarLista() {
 $('#lista').on('click', '[data-action="edit"]', function () {
 	let index = $(this).data('id') // Obtém o índice da tarefa selecionada
 	let value = lista[index] // Obtém o valor da tarefa selecionada
-	let originalValue = value // Armazena o valor original da tarefa
 	$('#edit-input').val(value) // Define o valor atual da tarefa no campo de entrada
 	$('#overlay').show() // Exibe a janela de popup
 	$('#edit-input').focus() // Dá foco ao campo de entrada
