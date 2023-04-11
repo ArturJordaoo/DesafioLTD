@@ -48,23 +48,24 @@ $('#lista').on('click', '[data-action="edit"]', function () {
 	$('#edit-input').val(value) // Define o valor atual da tarefa no campo de entrada
 	$('#overlay').show() // Exibe a janela de popup
 	$('#edit-input').focus() // Dá foco ao campo de entrada
-	// Adiciona um evento de clique para o botão "Salvar"
-	// Adiciona um evento de clique para o botão "Salvar"
-	$('#edit-save').on('click', function () {
-		let newValue = $('#edit-input').val() // Obtém o novo valor digitado pelo usuário
-		if (newValue !== '') {
-			// Verifica se o valor não está vazio
-			let indexDuplicate = lista.indexOf(newValue)
-			if (indexDuplicate !== -1 && indexDuplicate !== index) {
-				alert('Valor já existente na lista')
-				return
+	// Adiciona um evento de clique para o botão "Salvar
+	$('#edit-save')
+		.off('click')
+		.on('click', function () {
+			let newValue = $('#edit-input').val() // Obtém o novo valor digitado pelo usuário
+			if (newValue !== '') {
+				// Verifica se o valor não está vazio
+				let indexDuplicate = lista.indexOf(newValue)
+				if (indexDuplicate !== -1 && indexDuplicate !== index) {
+					alert('Valor já existente na lista')
+					return
+				}
+				lista[index] = newValue // Atualiza o valor da tarefa no array
+				localStorage.setItem('lista', JSON.stringify(lista)) // Salva o array no localStorage
+				mostrarLista() // Atualiza a lista na página
+				$('#overlay').hide() // Oculta a janela de popup
 			}
-			lista[index] = newValue // Atualiza o valor da tarefa no array
-			localStorage.setItem('lista', JSON.stringify(lista)) // Salva o array no localStorage
-			mostrarLista() // Atualiza a lista na página
-			$('#overlay').hide() // Oculta a janela de popup
-		}
-	})
+		})
 
 	// Adiciona um evento de clique para o botão "Cancelar"
 	$('#edit-cancel').one('click', function () {
