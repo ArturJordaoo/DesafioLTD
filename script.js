@@ -2,25 +2,25 @@
 let lista = JSON.parse(localStorage.getItem('lista') || '[]') // Obtém o array salvo no localStorage ou cria um novo array vazio
 
 $('#form').submit(function (event) {
-  event.preventDefault(); // Previne envio padrão do formulário
-  let valor = $('#valor').val(); // Obtém o valor inserido pelo usuário
+	event.preventDefault() // Previne envio padrão do formulário
+	let valor = $('#valor').val() // Obtém o valor inserido pelo usuário
 
-  if (valor !== "") {
-    // Verifica se o valor já está presente no array
-    if (lista.indexOf(valor) === -1) {
-      // Valor não encontrado no array, adiciona o valor ao array de tarefas
-      lista.push(valor); // Adiciona o valor ao array de tarefas
-      localStorage.setItem('lista', JSON.stringify(lista)); // Salva o array no localStorage
-      mostrarLista(); // Atualiza a lista na página
-      $('#valor').val(''); // Limpa o campo de texto
-    } else {
-      // Valor já existe no array, exibe mensagem de erro
-      alert('Este valor já está presente na lista.');
-    }
-  } else {
-    alert('Campo de texto não pode estar vazio.');
-  }
-});
+	if (valor !== '') {
+		// Verifica se o valor já está presente no array
+		if (lista.indexOf(valor) === -1) {
+			// Valor não encontrado no array, adiciona o valor ao array de tarefas
+			lista.push(valor) // Adiciona o valor ao array de tarefas
+			localStorage.setItem('lista', JSON.stringify(lista)) // Salva o array no localStorage
+			mostrarLista() // Atualiza a lista na página
+			$('#valor').val('') // Limpa o campo de texto
+		} else {
+			// Valor já existe no array, exibe mensagem de erro
+			alert('Este valor já está presente na lista.')
+		}
+	} else {
+		alert('Campo de texto não pode estar vazio.')
+	}
+})
 
 // Função para mostrar o conteúdo do array na página HTML
 function mostrarLista() {
@@ -49,7 +49,8 @@ $('#lista').on('click', '[data-action="edit"]', function () {
 	$('#overlay').show() // Exibe a janela de popup
 	$('#edit-input').focus() // Dá foco ao campo de entrada
 	// Adiciona um evento de clique para o botão "Salvar"
-	$('#edit-save').one('click', function () {
+	// Adiciona um evento de clique para o botão "Salvar"
+	$('#edit-save').on('click', function () {
 		let newValue = $('#edit-input').val() // Obtém o novo valor digitado pelo usuário
 		if (newValue !== '') {
 			// Verifica se o valor não está vazio
@@ -64,6 +65,7 @@ $('#lista').on('click', '[data-action="edit"]', function () {
 			$('#overlay').hide() // Oculta a janela de popup
 		}
 	})
+
 	// Adiciona um evento de clique para o botão "Cancelar"
 	$('#edit-cancel').one('click', function () {
 		$('#overlay').hide() // Oculta a janela de popup
