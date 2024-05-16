@@ -21,8 +21,16 @@ hr {
 
 /* Formulários */
 form {
+	display: flex;
+	align-items: center;
+	align-content: center;
 	padding: 0;
 	margin: 0;
+}
+.titulo {
+	display: flex;
+	align-items: center;
+	padding-left: 20rem;
 }
 /* input */
 .input-group {
