@@ -90,7 +90,10 @@ button[data-action='delete'] {
 	padding: 20px;
 	margin-bottom: 20px;
 }
-
+.middle-container{
+	padding: 0 20rem;
+	
+}
 footer {
 	position: fixed;
 	bottom: 0;
